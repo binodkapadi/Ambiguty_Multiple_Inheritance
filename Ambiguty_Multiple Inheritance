@@ -1,0 +1,65 @@
+CODE ==>>(Incorrect)
+
+#include<iostream>
+using namespace std;
+
+class A{
+	public:
+		fun(){
+			cout<<"This is Base 1 class."<<endl;
+		}
+};
+class B{
+	public:
+		fun(){
+			cout<<"This is Base 2 class."<<endl;
+		}
+};
+class C:public A,public B{
+	public:
+		Display(){
+			cout<<"This is Derrived class for multiple inheritance."<<endl;
+		}
+};
+
+int main(){
+	C ob;
+	ob.fun();
+	ob.Display();
+	return 0;
+}
+
+If we called base classes function having same function name with the object of derived class by using above method.
+It will show compilation error so, i have given solution like this...
+
+CODE ==>>(Correct)
+
+#include<iostream>
+using namespace std;
+
+class A{
+	public:
+		fun(){
+			cout<<"This is Base 1 class."<<endl;
+		}
+};
+class B{
+	public:
+		fun(){
+			cout<<"This is Base 2 class."<<endl;
+		}
+};
+class C:public A,public B{
+	public:
+		Display(){
+			cout<<"This is Derrived class for multiple inheritance."<<endl;
+		}
+};
+
+int main(){
+	C ob;
+	ob.A::fun();    //using scope resolution operator(Function call)
+	ob.B::fun();
+	ob.Display();
+	return 0;
+}
